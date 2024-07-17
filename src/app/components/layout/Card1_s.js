@@ -102,9 +102,8 @@ export default function Card({ id, pic, price}) {
                         {tabOpen && (
                             <div id="tab" className=" w-100vw h-100h top-0 left-0 right-0 bottom-0 fixed">
                                 <div className="bg-overlay z-2 w-100vw h-100h top-0 left-0 right-0 bottom-0 fixed items-center justify-center" onClick={toggle}></div>
-                                <div className="tab-content flex-col z-10 absolute w-full bg-white m-auto p-8 justify-center">
-                                    <div className='absolute right-8 top-8'><button className='text-[#f1f1f1] text-xl bg-[#37DD00] p-2' onClick={toggle}>X</button></div>
-                                    <div className='items-center mx-auto justify-center'><Image src={pic} alt="Masala Maggi" className="object-cover w-full"></Image></div>
+                                <div className="tab-content flex-col z-10 absolute w-full bg-white mx-auto p-8 justify-center bottom-0">
+                                    <div className='absolute right-4 top-4'><button className='text-[#f1f1f1] text-xl bg-[#37DD00] pl-1 pr-1 rounded-md' onClick={toggle}>x</button></div>
                                     <h2 className="mt-4 text-xl font-sans font-semibold">{id}</h2> 
                                     <div className="add-ons mt-2 mb-2">
                                         <div className="m-auto flex justify-between">
@@ -119,14 +118,20 @@ export default function Card({ id, pic, price}) {
                                         </div>
                                     </div>
                                 <div>{getTotal()}</div>
-                                    <div className='justify-between flex mt-8'>
+                                    <div className='justify-between flex mt-8 mb-4'>
                                         <div className="quantity flex">
-                                            <button onClick={decrease} className="text-xl pl-4 pr-4 text-[#f1f1f1] bg-[#37DD00] absolute bottom-4 left-8">-</button>
-                                            <input value={count} type="text" className="w-6 items-center justify-center absolute bottom-4 left-20"></input>
-                                            <button onClick={increase} className="text-xl pl-4 pr-4 text-[#f1f1f1] bg-[#37DD00] absolute bottom-4 left-24">+</button>
+                                            <button onClick={decrease} className="text-xl pl-4 pr-4 text-[#f1f1f1] bg-[#37DD00] absolute bottom-4 left-8 mb-4">-</button>
+                                            <input value={count} type="text" className="w-6 items-center justify-center absolute bottom-4 left-20 mb-4"
+                                              onChange={(event) => {
+                                                const newCount = parseInt(event.target.value, 10);
+                                                if (!isNaN(newCount)) {
+                                                  setCount(newCount);
+                                                }
+                                              }}></input>
+                                            <button onClick={increase} className="text-xl pl-4 pr-4 text-[#f1f1f1] bg-[#37DD00] absolute bottom-4 left-24 mb-4">+</button>
                                         </div>
                                         <div><button className="add-to-cart pl-3 pr-3 pt-1 pb-1 text-[#f1f1f1] font-sans font-semibold whitespace-nowrap bg-[#37DD00] rounded-md right-8 bottom-4
-                            absolute" onClick={()=>addToCart({ id, pic, price, quantity, checkboxes})}
+                            absolute mb-4" onClick={(item)=>addToCart({ id, pic, price, quantity, checkboxes})}
                                  >Add To Cart</button></div>
                                     </div>
                                 </div>

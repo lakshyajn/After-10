@@ -7,7 +7,7 @@ import Card from './Card1_s'
 import i1 from "../../../../public/assets/1-masala_maggi.jpeg";
 import i2 from "../../../../public/assets/2-hakka.jpg"
 
-export default function Card1({cart, addItem, removeItem, clearCart,subtotal}){
+export default function Card1(){
 
     return(
         <div className="card1">

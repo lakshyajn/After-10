@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback } from 'react';
 
 const CartContext = createContext();
 
@@ -8,31 +8,29 @@ const CartProvider = ({ children }) => {
   const [cartTotal, setCartTotal] = useState(0);
   const [cartLength, setCartLength] = useState(0);
 
-  const addToCart = (item) => {
+  const addToCart = useCallback((item) => {
     const { id, pic, price, quantity, checkboxes } = item;
     const existingItem = cart.find((i) => i.id === id);
     if (existingItem) {
-        setCart(
-            cart.map((cartItem) =>
-              cartItem.id === id ? { ...cartItem, quantity: cartItem.quantity + quantity } : cartItem
-            )
-          );
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === id ? { ...cartItem, quantity: cartItem.quantity + quantity } : cartItem
+        )
+      );
     } else {
-        setCart([...cart, { ...item,quantity}]);
-        setCartLength(cart.length + quantity);
+      setCart([...cart, { ...item, quantity }]);
+      setCartLength(cartLength + 1); 
     }
-    
-    
     let checkboxTotal = 0;
-  if (checkboxes.cheese && checkboxes.veges) {
-    checkboxTotal = 50 * quantity;
-  } else if (checkboxes.cheese) {
-    checkboxTotal = 20 * quantity;
-  } else if (checkboxes.veges) {
-    checkboxTotal = 30 * quantity;
-  }
-  setCartTotal(cartTotal + price*quantity + checkboxTotal);
-  };
+    if (checkboxes.cheese && checkboxes.veges) {
+      checkboxTotal = 50 * quantity;
+    } else if (checkboxes.cheese) {
+      checkboxTotal = 20 * quantity;
+    } else if (checkboxes.veges) {
+      checkboxTotal = 30 * quantity;
+    }
+    setCartTotal(cartTotal + price * quantity + checkboxTotal);
+  }, [cart, setCart, cartLength, setCartLength, cartTotal, setCartTotal]);
 
   const removeFromCart = (id) => {
     setCart(cart.filter((i) => i.id !== id));
