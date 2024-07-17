@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+}
+.filter:hover{
+    border-color: #37DD00;
+    box-shadow: 0 0 10px rgba(55, 221, 0)
+    color(#37DD00)
+}
+.active-tab{
+    overflow-y: hidden;
+}
