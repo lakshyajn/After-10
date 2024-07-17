@@ -10,8 +10,9 @@ import { faChevronCircleDown, faChevronCircleUp, faRotate } from "@fortawesome/f
 import logo from "../../../../public/assets/Untitled-1-copy-1.png"
 import search from "../../../../public/assets/search_24dp_FILL0_wght400_GRAD0_opsz24.svg"
 import { CartContext } from './cart-context';
-import checkout from '../pages/Checkout';
-import {useHref} from 'next/navigation';
+import checkout from '@/app/Checkout/page';
+import { useRouter } from 'next/router';
+import App from 'next/app';
 
 export default function Header({cart, addToCart, removeFromCart, clearCart}) {
    
@@ -19,6 +20,9 @@ export default function Header({cart, addToCart, removeFromCart, clearCart}) {
   function subtotal(){setsmallCart(!smallCart);}
  
    const {cartLength, cartTotal} = useContext(CartContext);
+
+   const router= useRouter();
+   const handleCheckout = () => {router.push('/checkout');};
    
     return(
         <div className="justify-center">
@@ -35,7 +39,7 @@ export default function Header({cart, addToCart, removeFromCart, clearCart}) {
           <div className="flex bottom-5 right-24 text-xl absolute">
             <div>Total: </div>
             <span className="text-[#37DD00] font-semibold mr-2">₹ {cartTotal.toFixed(2)}</span>
-            <div><Link href="/checkout">Cart({cartLength})</Link></div>
+            <div onClick={handleCheckout}>Cart({cartLength})</div>
           </div>
           </div>
         </div>
