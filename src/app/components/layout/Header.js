@@ -11,6 +11,8 @@ import logo from "../../../../public/assets/Untitled-1-copy-1.png"
 import search from "../../../../public/assets/search_24dp_FILL0_wght400_GRAD0_opsz24.svg"
 import { CartContext } from './cart-context';
 import { useRouter } from 'next/navigation';
+import checkout from '@/app/checkout/page';
+import {useHref} from 'next/navigation';
 
 export default function Header({}) {
    
