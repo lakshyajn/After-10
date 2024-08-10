@@ -1,5 +1,5 @@
-'use client'
-import { createContext, useState, useCallback } from 'react';
+"use client" 
+import { createContext, useState, useCallback, useEffect } from 'react';
 
 const CartContext = createContext();
 
@@ -7,6 +7,17 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartLength, setCartLength] = useState(0);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart)); 
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = useCallback((item) => {
     const { id, pic, price, quantity, checkboxes } = item;
@@ -19,7 +30,7 @@ const CartProvider = ({ children }) => {
       );
     } else {
       setCart([...cart, { ...item, quantity }]);
-      setCartLength(cartLength + 1); 
+      setCartLength(cartLength + 1);
     }
     let checkboxTotal = 0;
     if (checkboxes.cheese && checkboxes.veges) {
@@ -41,6 +52,7 @@ const CartProvider = ({ children }) => {
     setCart([]);
     setCartTotal(0);
     setCartLength(0);
+    localStorage.removeItem('cart');
   };
 
   const updateCartTotal = () => {

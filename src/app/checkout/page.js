@@ -46,32 +46,35 @@ export default function Checkout(){
       <Head><title>Checkout</title></Head>
 
       <div className="mb-4 mx-auto py-4 container">
-        <h2 className="text-xl font-bold mb-2">Order Summary</h2>
-        <div className="bg-gray-100 p-4 rounded-md">
-        <div className="flex flex-wrap -mx-4">
-          {cart.map((item) => (
-            <div key={item.id} className="w-full md:w-1/2 xl:w-1/3 p-4">
-              <div className="bg-white border rounded-md p-4">
-                <h3 className="text-lg font-bold">{item.id}</h3>
-                <p>Quantity: {item.quantity}</p>
-                <p>Price: ${item.price * item.quantity}</p>
-                {item.checkboxes.cheese && <p>+ Cheese: ₹20</p>}
-                {item.checkboxes.veges && <p>+ Veggies: ₹30</p>}
-              </div>
-            </div>
-          ))}
+  <h2 className="text-xl font-bold mb-2">Order Summary</h2>
+  <div className="flex flex-wrap mx-4">
+          {cart.length > 0 ? (
+            <ul>
+              {cart.map((item, index) => (
+                <li key={index}>
+                  <span>{item.name}</span>
+                  <span>Quantity: {item.quantity}</span>
+                  <span>Price: ₹ {item.price * item.quantity}</span>
+                  {item.checkboxes.cheese && <span>+ Cheese: ₹20</span>}
+                  {item.checkboxes.veges && <span>+ Veggies: ₹30</span>}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-center">Your cart is empty.</p>
+          )}
         </div>
-      </div>
-   </div>
-      <div className="mb-4 flex justify-between items-baseline m-2 border-b">
-        <h2 className="text-md mb-2">Subtotal</h2>
-        <p>₹ {cartTotal.toFixed(2)}</p>
-      </div>
 
-      <div className="mb-4 flex justify-between items-baseline m-2 border-b">
-        <h2 className="text-lg font-bold mb-2">Total</h2>
-        <p>₹ {cartTotal.toFixed(2)}</p>
-      </div>
+  <div className="mb-4 flex justify-between items-baseline m-2 border-b">
+    <h2 className="text-md mb-2">Subtotal</h2>
+    <p>₹ {cart && Array.isArray(cart) ? cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2) : '0.00'}</p>
+  </div>
+
+  <div className="mb-4 flex justify-between items-baseline m-2 border-b">
+    <h2 className="text-lg font-bold mb-2">Total</h2>
+    <p>₹ {cart && Array.isArray(cart) ? cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2) : '0.00'}</p>
+  </div>
+</div>
 
       <div className="mb-4">
         <h2 className="text-xl font-bold mb-2">Contact Information</h2>
@@ -80,7 +83,7 @@ export default function Checkout(){
             <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
               Email Address
             </label>
-            <input
+            <input 
               type="email"
               id="email"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
