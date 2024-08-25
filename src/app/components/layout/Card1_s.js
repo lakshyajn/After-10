@@ -5,58 +5,6 @@ import Image from "next/image";
 
 
 export default function Card({ id, pic, price}) {
-    // const [cart,setCart]= useState({});
-    // const [subtotal,setSubTotal]= useState(0);
-    
-    // useEffect(()=>{
-    //   try{
-    //   if(localStorage.getItem("cart")){
-    //     setCart(JSON.parse(localStorage.getItem("cart")));
-    //   }}
-    //   catch(error){
-    //     console.error(error);
-    //     localStorage.clear();
-    //   }
-    // },[])
-    
-    // const saveCart=(myCart)=>{
-    //   localStorage.setItem("cart",myCart);
-    //   let subt=0;
-    //   let keys= Object.keys(myCart);
-    //   for(let i=0;i<keys.length;i++){
-    //     subt+= myCart[keys[i]].price*myCart[keys[i]].qty + myCart[keys[i]].add_price*myCart[keys[i]].qty;
-    // }
-    //   setSubTotal(subt);
-    // }
-    
-    // const addItem=(item_name,pic,price,qty,addons,add_price)=>{
-    //  let newCart= cart;
-    //  if(item_name in cart){
-    //    newCart[item_name].qty = cart[item_name].qty + qty;
-    //  }
-    //  else{
-    //    newCart[item_name]= {pic,price,qty:1,addons,add_price}
-    //  }
-    //  setCart(newCart);
-    //  saveCart(newCart);
-    // }
-    
-    // const removeItem=(item_name,pic,price,qty,addons,total)=>{
-    //   let newCart= cart;
-    //   if(item_name in cart){
-    //     newCart[item_name].qty = cart[item_name].qty - qty;
-    //   }
-    //   if(newCart[item_name].qty<=0){
-    //     delete newCart[item_name];
-    //   }
-    //   setCart(newCart);
-    //   saveCart(newCart);
-    //  }
-    
-    // const clearCart=()=>{
-    //   setCart({});
-    //   saveCart({});
-    // }
     const {addToCart} = useContext(CartContext);
 
     const [tabOpen, setTabopen] = useState(false);

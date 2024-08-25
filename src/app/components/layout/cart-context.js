@@ -4,6 +4,7 @@ import { createContext, useState, useCallback, useEffect } from 'react';
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+  
   const [cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
   const [cartLength, setCartLength] = useState(0);
@@ -60,6 +61,38 @@ const CartProvider = ({ children }) => {
     setCartTotal(total);
     setCartLength(cart.length);
   };
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    console.log('Stored cart:', storedCart);
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+  
+  useEffect(() => {
+    console.log('Saving cart:', cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    console.log('CartProvider - Stored cart:', storedCart);
+    if (storedCart) {
+      try {
+        const parsedCart = JSON.parse(storedCart);
+        setCart(parsedCart);
+        console.log('CartProvider - Parsed cart:', parsedCart);
+      } catch (error) {
+        console.error('CartProvider - Error parsing cart:', error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('CartProvider - Saving cart:', cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <CartContext.Provider
