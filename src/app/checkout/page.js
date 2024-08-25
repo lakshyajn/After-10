@@ -190,7 +190,7 @@ ${address.line2}
           </div>
         </div>
 
-        <div className="mb-4">
+        <div className="mb-4 items-center justify-center">
           <h2 className="text-xl font-bold mb-2">Contact Information</h2>
           <div className="bg-[#F5F5F5] p-4 rounded-md">
             <div className="mb-2 mt-1">
@@ -323,15 +323,16 @@ ${address.line2}
                 />
               </div>
             </div>
-          </div>
-
-          <div className="mb-4 flex justify-between items-center">
+            
+          <div className="mb-4 mt-8 flex justify-center items-center">
             <button
               onClick={handlePlaceOrder}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+              className="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded justify-center items-center justify-self-center">
               Place Order
             </button>
           </div>
+          </div>
+
         </div>
       </div>
     </>
