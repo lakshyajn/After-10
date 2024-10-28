@@ -1,23 +1,21 @@
-'use client';
-import '../../../app/globals.css';
-import Image from "next/image";
-import React,{ useContext } from "react";
-import { CartContext } from './cart-context';
-import Card from './Card1_s'
-import i1 from "../../../../public/assets/1-masala_maggi.jpeg";
-import i2 from "../../../../public/assets/2-hakka.jpg"
+import Card from "./Card1_s"; // Import Card1_s.js
 
-export default function Card1(){
-
-    return(
-        <div className="card1">
-         <div>
-            <div id="maggi_n_noodles" className="text-[#37DD00] text-2xl font-sans">Maggi & Noodles</div>
-            </div>
-
-         <Card id="Masala Maggi"  pic={i1} price={80.00}/>   
-         <Card id="Hakka Noodles" pic={i2} price={130.00}/>
-         <Card id="Crispy Noodles" pic={i1} price={100.00}/>
-        </div>
-    );
+export default function Card1({ categoryName, items }) {
+  return (
+    <div id={categoryName} className="category-section">
+      <h2 className="text-xl font-bold mb-4">{categoryName}</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {items.map((item) => (
+          <Card
+            key={item._id}
+            id={item._id}
+            name={item.name}
+            pic={item.imageUrl}
+            price={item.price}
+            addOns={item.addOns}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

@@ -13,7 +13,7 @@ import { CartContext } from './cart-context';
 import { useRouter } from 'next/navigation';
 import checkout from '@/app/checkout/page';
 import {useHref} from 'next/navigation';
-
+ 
 export default function Header({}) {
    
   const [smallCart, setsmallCart] = useState(false);

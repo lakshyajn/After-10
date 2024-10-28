@@ -1,0 +1,55 @@
+/* src/styles/admin.css */
+
+.admin-page {
+    padding: 20px;
+  }
+  
+  .admin-section {
+    margin-bottom: 40px;
+  }
+  
+  .items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .item-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .add-item-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-item-form label {
+    margin-bottom: 10px;
+  }
+  
+  .add-item-form input {
+    margin-top: 5px;
+  }
+  
+  .add-item-form button {
+    background-color: #37DD00;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  

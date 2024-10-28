@@ -10,7 +10,7 @@ const CartProvider = ({ children }) => {
   const [cartLength, setCartLength] = useState(0);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
+    const storedCart = localStorage.getItem('cart'); 
     if (storedCart) {
       setCart(JSON.parse(storedCart)); 
     }

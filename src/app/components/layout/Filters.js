@@ -15,10 +15,10 @@ export default function Filters(){
             <Link href="/#pasta" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Pasta & Garlic Bread</Link>
             <Link href="/#rice" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Rice/Biryani</Link>
             <Link href="/#soyachaap" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Soya Chaap</Link>
-            <Link href="/#starters" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Staters</Link>
+            <Link href="/#starters" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Starters</Link>
             <Link href="/#wraps" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Wraps</Link>
             <Link href="/#addons" className="hover:text-[#37DD00] hover:border-[#37DD00] border rounded-md p-2">Add Ons</Link>
             </nav>  
         </div>
-    );
+    ); 
 }

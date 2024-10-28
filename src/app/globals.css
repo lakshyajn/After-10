@@ -15,3 +15,12 @@
 .active-tab{
     overflow-y: hidden;
 }
+
+html {
+    scroll-behavior: smooth;
+  }
+  
+  .category-section {
+    margin-top: 2rem;
+  }
+  
